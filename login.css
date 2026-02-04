@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    text-align: center;
+
+    background-image: url("https://cdn.dribbble.com/userupload/24945876/file/original-d6f1789af6de825fa0d56e4f84b4feab.gif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(14, 13, 13);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(158, 156, 156, 0.5);
+    z-index: -1;
+}
+
+h2 {
+    font-size: 45px;
+    color: rgb(250, 196, 131);
+
+}
+
+.form {
+    max-width: 900px;
+    margin: 100px;
+    padding: 30px;
+
+    display: flex;
+    gap: 40px;
+ 
+
+    background: rgba(225, 246, 246, 0.1);
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+}
+
+
+
+fieldset {
+    border: none;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    row-gap: 15px;
+    column-gap: 10px;
+   
+}
+
+
+input,
+textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #999;
+    pointer-events: painted;
+    display: flex;
+   
+}
+
+.login {
+
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #da8e48, #5a3914);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+
+
+}
+
+.login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+
+}
+
+.button {
+
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.name {
+    font-size: 30px;
+}

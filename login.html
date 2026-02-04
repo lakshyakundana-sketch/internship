@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+<div class="form">
+    <form id="loginForm">
+        <p class="name">Login</p>
+
+        <fieldset class="form-grid">
+            <label>Username:</label>
+            <input type="text" id="username" required placeholder="Enter username">
+
+            <label>Password:</label>
+            <input type="password" id="password" required placeholder="Enter password">
+
+            <div class="button">
+                <button type="submit">Login</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    fetch("http://192.168.0.130:8000/api/token/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ username, password })
+    })
+    .then(res => {
+        console.log("LOGIN STATUS:", res.status);
+        return res.json();
+    })
+    .then(data => {
+        console.log("LOGIN RESPONSE:", data);
+
+        if (data.access) {
+            localStorage.setItem("access", data.access);
+            localStorage.setItem("refresh", data.refresh);
+
+            console.log(
+              "TOKEN SAVED:",
+              localStorage.getItem("access")
+            );
+
+            window.location.href = "home.html";
+        } else {
+            alert("Invalid credentials");
+        }
+    })
+    .catch(err => {
+        console.error("LOGIN ERROR:", err);
+        alert("Login failed");
+    });
+});
+</script>
+
+
+
+</body>
+</html>
